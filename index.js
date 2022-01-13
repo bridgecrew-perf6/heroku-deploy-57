@@ -12,6 +12,19 @@ server.get("/api/users", (req, res) => {
   ]);
 });
 
+server.post("/api/register", (req, res) => {
+  res.json(req.body);
+});
+
+server.post("/api/login", (req, res) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    res.status(400).json({ message: `Missing required text` });
+  } else {
+    res.status(200).json({ message: `Welcome!` });
+  }
+});
+
 PORT = process.env.PORT;
 
 server.listen(PORT, () => {
